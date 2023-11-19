@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar/Navbar'
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   const [productList, setProductList] = useState<TProduct[]>([])
 
   useEffect(() => {
@@ -16,11 +15,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar />
       <div>Platzi and Next.js!</div>
-      {productList.map((product) => (
-        <div>{product.name}</div>
-      ))}
+      {productList.map((product) => {
+        const { id, name } = product
+        return <div key={id}>{name}</div>
+      })}
     </div>
   )
 }
